@@ -25,19 +25,26 @@ This tool allows you to define build, test, and deploy stages using a single YAM
 
 
 ### Step 1: Create a YAML configuration file named pipeline.yaml in the root of your project.
+The YAML configuration file is organized under the pipeline key, which contains three main stages: build, test, and deploy, making it easy to manage and extend.
+_Customize it by adding additional commands or changing the paths accordingly to your setup_ 
 
 ```
 pipeline:
-  build:
+  build: # Prepare your application by installing necessary dependencies or tools.
     - name: Install Dependencies
-      run: npm install
-  test:
+      run: npm install # Example: Install Node.js dependencies; replace with your desired dependency installation command.
+
+    - name: Set Up Python Environment
+    - run: python3 -m venv venv1 # Creates a virtual environment named 'venv1'
+
+  test: # Runs your unit tests to ensure code quality.
     - name: Run Unit Tests
-      run: npm test
-  deploy:
+      run: npm test # Example: Run unit tests; replace with your test command.
+
+  deploy: # Handles deploying your application if certain conditions are met. (e.g., upload files, restart services, trigger hooks).
     - name: Deploy to Production
-      if: github.ref == 'refs/heads/main'
-      run: ./deploy.sh production
+      if: github.ref == 'refs/heads/main' # Only deploys when changes are pushed to the 'main' branch.
+      run: ./deploy.sh production # Executes the 'deploy.sh' script with 'production' as an argument.
 ```
 
 ### Step 2: Run the script to generate the GitHub Actions workflow file.
