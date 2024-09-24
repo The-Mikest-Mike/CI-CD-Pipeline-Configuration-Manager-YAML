@@ -31,7 +31,7 @@ The YAML configuration file is organized under the pipeline key, which contains 
 
 ```
 pipeline:
-  build: # Prepare your application by installing necessary dependencies or tools.
+  build:
     - name: Set Up Python Virtual Environment
       run: python3 -m venv venv1 # Creates a virtual environment named 'venv1'
 
@@ -40,14 +40,14 @@ pipeline:
         source venv1/bin/activate # Activates the virtual environment
         pip install flask # Installs Flask inside the virtual environment
 
-  test: # Runs your unit tests to ensure code quality.
+  test: 
     - name: Run Unit Tests
-      run: npm test # Example: Run unit tests; replace with your test command.
+      run: npm test # Example: Run unit tests; replace with your test command
 
-  deploy: # Handles deploying if conditions are met (e.g. when changes are pushed to the 'main' branch)
+  deploy:
     - name: Deploy to Production
-      if: github.ref == 'refs/heads/main'
-      run: ./deploy.sh production # Executes the 'deploy.sh' script with 'production' as an argument.
+      if: github.ref == 'refs/heads/main' # Deploys when changes are pushed to the 'main' branch
+      run: ./deploy.sh production # Executes the 'deploy.sh' script with 'production' as an argument
 ```
 
 ### Step 2: Run the script to generate the GitHub Actions workflow file.
