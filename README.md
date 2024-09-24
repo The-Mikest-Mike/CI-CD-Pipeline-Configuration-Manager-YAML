@@ -13,18 +13,18 @@ This tool allows you to define build, test, and deploy stages using a single YAM
 
 ## How to Use
 
-## Prerequisites
+### Prerequisites
 - Python 3.x
 - Install PyYAML library: `pip install pyyaml`
 - GitHub repository with GitHub Actions enabled
 
-## Installation
+### Installation
 1. Clone repository:  `git clone https://github.com/your-username/cicd-pipeline-config-manager.git`
 2. Move to directory: `cd cicd-pipeline-config-manager`
 3. Install required Python packages: `pip install -r requirements.txt`
 
 
-### Step 1 Create a YAML configuration file named pipeline.yaml in the root of your project.
+### Step 1: Create a YAML configuration file named pipeline.yaml in the root of your project.
 
 ```
 pipeline:
@@ -40,13 +40,13 @@ pipeline:
       run: ./deploy.sh production
 ```
 
-### Step 2 Run the script to generate the GitHub Actions workflow file.
+### Step 2: Run the script to generate the GitHub Actions workflow file.
 
 ```
 python generate_workflow.py
 ```
 
-### Step 3 Commit and push the generated workflow file to your repository.
+### Step 3: Commit and push the generated workflow file to your repository.
 
 
 ### Project Directory Structure
