@@ -1,6 +1,6 @@
 # CI-CD-Pipeline-Configuration-Manager-YAML
-Simplify and automate the setup of CI/CD pipelines using GitHub Actions
 
+Simplify and automate the setup of CI/CD pipelines using GitHub Actions
 Allows you to define build, test, and deploy stages using a single YAML configuration file, making it easy to replicate and manage pipelines across multiple projects.
 
 ## Features
@@ -14,19 +14,15 @@ Allows you to define build, test, and deploy stages using a single YAML configur
 ## How to Use
 
 Prerequisites
-Python 3.x
-PyYAML library: Install it using pip install pyyaml
-GitHub repository with GitHub Actions enabled
+- Python 3.x
+- PyYAML library: Install it using `pip install pyyaml`
+- GitHub repository with GitHub Actions enabled
+- Clone repository:  `git clone https://github.com/your-username/cicd-pipeline-config-manager.git`
+- Move to directory: `cd cicd-pipeline-config-manager`
+- Install required Python packages: `pip install -r requirements.txt`
 
 
-git clone https://github.com/your-username/cicd-pipeline-config-manager.git
-cd cicd-pipeline-config-manager
-
-pip install -r requirements.txt
-
-
-1) Create a YAML configuration file named pipeline.yaml in the root of your project:
-yaml
+### Step 1 Create a YAML configuration file named pipeline.yaml in the root of your project
 
 ```
 pipeline:
@@ -42,16 +38,31 @@ pipeline:
       run: ./deploy.sh production
 ```
 
-2) Run the script to generate the GitHub Actions workflow file:
+### Step 2 Run the script to generate the GitHub Actions workflow file:
 
 ```
 python generate_workflow.py
 ```
 
-3) Commit and push the generated workflow file to your repository.
+### Step 3 Commit and push the generated workflow file to your repository.
 
 
-Repository Arquitechture
+## Example of a pipeline.yaml configuration:
+
+pipeline:
+  build:
+    - name: Install Dependencies
+      run: npm install
+  test:
+    - name: Run Unit Tests
+      run: npm test
+  deploy:
+    - name: Deploy to Production
+      if: github.ref == 'refs/heads/main'
+      run: ./deploy.sh production
+
+
+### Project Directory Structure
 ```
 cicd-pipeline-config-manager/
 │
@@ -63,24 +74,7 @@ cicd-pipeline-config-manager/
 ```
 
 
-Example
-Example of a pipeline.yaml configuration:
-
-pipeline:
-  build:
-    - name: Install Dependencies
-      run: npm install
-  test:
-    - name: Run Unit Tests
-      run: npm test
-  deploy:
-    - name: Deploy to Production
-      if: github.ref == 'refs/heads/main'
-      run: ./deploy.sh production
-
-
-
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
