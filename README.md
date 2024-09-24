@@ -1,6 +1,6 @@
 # CI-CD-Pipeline-Configuration-Manager-YAML
 
-Simplify and automate the setup of CI/CD pipelines using GitHub Actions
+Simplify and automate the setup of CI/CD pipelines using GitHub Actions.
 Allows you to define build, test, and deploy stages using a single YAML configuration file, making it easy to replicate and manage pipelines across multiple projects.
 
 ## Features
@@ -22,7 +22,7 @@ Prerequisites
 - Install required Python packages: `pip install -r requirements.txt`
 
 
-### Step 1 Create a YAML configuration file named pipeline.yaml in the root of your project
+### Step 1 Create a YAML configuration file named pipeline.yaml in the root of your project.
 
 ```
 pipeline:
@@ -38,7 +38,7 @@ pipeline:
       run: ./deploy.sh production
 ```
 
-### Step 2 Run the script to generate the GitHub Actions workflow file:
+### Step 2 Run the script to generate the GitHub Actions workflow file.
 
 ```
 python generate_workflow.py
@@ -47,8 +47,9 @@ python generate_workflow.py
 ### Step 3 Commit and push the generated workflow file to your repository.
 
 
-## Example of a pipeline.yaml configuration:
+## Example of a pipeline.yaml configuration.
 
+```
 pipeline:
   build:
     - name: Install Dependencies
@@ -60,6 +61,7 @@ pipeline:
     - name: Deploy to Production
       if: github.ref == 'refs/heads/main'
       run: ./deploy.sh production
+```
 
 
 ### Project Directory Structure
