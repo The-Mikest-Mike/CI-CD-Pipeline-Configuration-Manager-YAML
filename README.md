@@ -1,7 +1,7 @@
 # CI-CD-Pipeline-Configuration-Manager-YAML
 
-Simplify and automate the setup of CI/CD pipelines using GitHub Actions.
-Allows you to define build, test, and deploy stages using a single YAML configuration file, making it easy to replicate and manage pipelines across multiple projects.
+Simplify and automate the setup of CI/CD pipelines using GitHub Actions. 
+This tool allows you to define build, test, and deploy stages using a single YAML configuration file, making it easy to replicate and manage pipelines across multiple projects.
 
 ## Features
 ✨ YAML-based Configuration: Define your CI/CD pipeline stages (build, test, deploy) in a simple YAML file. <br>
@@ -13,13 +13,15 @@ Allows you to define build, test, and deploy stages using a single YAML configur
 
 ## How to Use
 
-Prerequisites
+## Prerequisites
 - Python 3.x
-- PyYAML library: Install it using `pip install pyyaml`
+- Install PyYAML library: `pip install pyyaml`
 - GitHub repository with GitHub Actions enabled
-- Clone repository:  `git clone https://github.com/your-username/cicd-pipeline-config-manager.git`
-- Move to directory: `cd cicd-pipeline-config-manager`
-- Install required Python packages: `pip install -r requirements.txt`
+
+## Installation
+1. Clone repository:  `git clone https://github.com/your-username/cicd-pipeline-config-manager.git`
+2. Move to directory: `cd cicd-pipeline-config-manager`
+3. Install required Python packages: `pip install -r requirements.txt`
 
 
 ### Step 1 Create a YAML configuration file named pipeline.yaml in the root of your project.
@@ -45,23 +47,6 @@ python generate_workflow.py
 ```
 
 ### Step 3 Commit and push the generated workflow file to your repository.
-
-
-## Example of a pipeline.yaml configuration.
-
-```
-pipeline:
-  build:
-    - name: Install Dependencies
-      run: npm install
-  test:
-    - name: Run Unit Tests
-      run: npm test
-  deploy:
-    - name: Deploy to Production
-      if: github.ref == 'refs/heads/main'
-      run: ./deploy.sh production
-```
 
 
 ### Project Directory Structure
