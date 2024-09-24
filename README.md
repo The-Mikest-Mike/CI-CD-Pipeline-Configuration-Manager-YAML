@@ -26,13 +26,14 @@ This tool allows you to define build, test, and deploy stages using a single YAM
 
 ### Step 1: Create a YAML configuration file named pipeline.yaml in the root of your project.
 The YAML configuration file is organized under the pipeline key, which contains three main stages: build, test, and deploy, making it easy to manage and extend.
-_Customize it by adding additional commands or changing the paths accordingly to your setup_ 
+
+⚠️ _Customize it by adding additional commands or changing the paths, names and dependencies accordingly to your setup_ 
 
 ```
 pipeline:
   build: # Prepare your application by installing necessary dependencies or tools.
     - name: Install Dependencies
-      run: npm install # Example: Install Node.js dependencies; replace with your desired dependency installation command.
+      run: npm install 
 
     - name: Set Up Python Environment
     - run: python3 -m venv venv1 # Creates a virtual environment named 'venv1'
