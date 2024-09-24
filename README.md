@@ -32,22 +32,21 @@ The YAML configuration file is organized under the pipeline key, which contains 
 ```
 pipeline:
   build: # Prepare your application by installing necessary dependencies or tools.
-    - name: Install Dependencies
-      run: pip install flask
-
     - name: Set Up Python Virtual Environment
-    - run: python3 -m venv venv1 # Creates a virtual environment named 'venv1'
+      run: python3 -m venv venv1 # Creates a virtual environment named 'venv1'
 
-    - name: Activate Virtual Environment
-    - run: source venv1/bin/activate
+    - name: Activate Virtual Environment and Install Dependencies
+      run: |
+        source venv1/bin/activate # Activates the virtual environment
+        pip install flask # Installs Flask inside the virtual environment
 
   test: # Runs your unit tests to ensure code quality.
     - name: Run Unit Tests
       run: npm test # Example: Run unit tests; replace with your test command.
 
-  deploy: # Handles deploying if conditions are met (e.g., upload files, restart services, trigger hooks).
+  deploy: # Handles deploying if conditions are met (e.g. when changes are pushed to the 'main' branch)
     - name: Deploy to Production
-      if: github.ref == 'refs/heads/main' # Only deploys when changes are pushed to the 'main' branch.
+      if: github.ref == 'refs/heads/main'
       run: ./deploy.sh production # Executes the 'deploy.sh' script with 'production' as an argument.
 ```
 
